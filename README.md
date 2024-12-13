@@ -21,6 +21,7 @@ To Set up the environment, run:
     cd glpk-5.0;./configure
     cd glpk-5.0; make
     cd ..
+    # Run this if you start from scratch:
     git clone https://github.com/Yu-Maryland/ENEE759U.git
   ```
   Then, download and import auto_schedule.py to the main directory to run.
