@@ -1,0 +1,42 @@
+GLPSOL--GLPK LP/MIP Solver 5.0
+Parameter(s) specified in the command line:
+ --cpxlp data/rand_DFG_s10_8.edgelist.lp -o outputs/rand_DFG_s10_8.edgelist.out
+Reading problem data from 'data/rand_DFG_s10_8.edgelist.lp'...
+data/rand_DFG_s10_8.edgelist.lp:5272: warning: missing final end of line
+3042 rows, 1102 columns, 10944 non-zeros
+1101 integer variables, 1090 of which are binary
+5272 lines were read
+GLPK Integer Optimizer 5.0
+3042 rows, 1102 columns, 10944 non-zeros
+1101 integer variables, 1090 of which are binary
+Preprocessing...
+1 hidden covering inequaliti(es) were detected
+1912 rows, 701 columns, 6561 non-zeros
+701 integer variables, 690 of which are binary
+Scaling...
+ A: min|aij| =  1.000e+00  max|aij| =  1.000e+01  ratio =  1.000e+01
+Problem data seem to be well scaled
+Constructing initial basis...
+Size of triangular part is 1912
+Solving LP relaxation...
+GLPK Simplex Optimizer 5.0
+1912 rows, 701 columns, 6561 non-zeros
+      0: obj =   0.000000000e+00 inf =   2.200e+01 (22)
+     51: obj =   1.250000000e-01 inf =   4.205e-14 (0)
+*    54: obj =   0.000000000e+00 inf =   8.010e-15 (0)
+OPTIMAL LP SOLUTION FOUND
+Integer optimization begins...
+Long-step dual simplex will be used
++    54: mip =     not found yet >=              -inf        (1; 0)
++  3261: >>>>>   6.500000000e+01 >=   0.000000000e+00 100.0% (20; 1)
++  4137: >>>>>   6.100000000e+01 >=   0.000000000e+00 100.0% (29; 2)
++ 71607: mip =   6.100000000e+01 >=   3.800000000e+01  37.7% (445; 244)
++134008: mip =   6.100000000e+01 >=   4.600000000e+01  24.6% (816; 613)
++197107: mip =   6.100000000e+01 >=   5.200000000e+01  14.8% (992; 1214)
++262164: mip =   6.100000000e+01 >=   5.600000000e+01   8.2% (1135; 2093)
++324273: mip =   6.100000000e+01 >=   5.900000000e+01   3.3% (664; 4365)
++370046: mip =   6.100000000e+01 >=     tree is empty   0.0% (0; 8997)
+INTEGER OPTIMAL SOLUTION FOUND
+Time used:   29.2 secs
+Memory used: 19.5 Mb (20397997 bytes)
+Writing MIP solution to 'outputs/rand_DFG_s10_8.edgelist.out'...

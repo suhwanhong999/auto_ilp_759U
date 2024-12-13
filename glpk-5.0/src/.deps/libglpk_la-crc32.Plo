@@ -1,6 +1,6 @@
 libglpk_la-crc32.lo: zlib/crc32.c /usr/include/stdc-predef.h zlib/zutil.h \
  zlib/zlib.h zlib/zconf.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h /usr/include/string.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -38,6 +38,7 @@ libglpk_la-crc32.lo: zlib/crc32.c /usr/include/stdc-predef.h zlib/zutil.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
  /usr/include/x86_64-linux-gnu/bits/select2.h \
+ /usr/include/x86_64-linux-gnu/bits/select-decl.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
@@ -47,8 +48,8 @@ libglpk_la-crc32.lo: zlib/crc32.c /usr/include/stdc-predef.h zlib/zutil.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
  /usr/include/linux/limits.h \
@@ -59,7 +60,7 @@ libglpk_la-crc32.lo: zlib/crc32.c /usr/include/stdc-predef.h zlib/zutil.h \
 zlib/zutil.h:
 zlib/zlib.h:
 zlib/zconf.h:
-/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
+/usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
 /usr/include/string.h:
 /usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 /usr/include/features.h:
@@ -101,6 +102,7 @@ zlib/zconf.h:
 /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 /usr/include/x86_64-linux-gnu/bits/select2.h:
+/usr/include/x86_64-linux-gnu/bits/select-decl.h:
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h:
@@ -111,8 +113,8 @@ zlib/zconf.h:
 /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h:
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
 /usr/include/x86_64-linux-gnu/bits/stdlib.h:
-/usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h:
-/usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h:
+/usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h:
+/usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h:
 /usr/include/limits.h:
 /usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
 /usr/include/x86_64-linux-gnu/bits/local_lim.h:

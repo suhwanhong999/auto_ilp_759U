@@ -295,15 +295,28 @@ def generate_minimize(glpk_file: str, graph, min_mem: bool):
     else:
       lpfile.write("  latency: L \n")
 
+def print_results(output_file: str, var: int):
+  with open(output_file, 'r') as outputs:
+    for line in outputs:
+      line = line.split()
+      if (str(line[0]) == "Objective:"):
+        if (int(line[3]) != 0):
+          print("Latency Constraint: " + str(var))
+          print("Memory Output: " + line[3])
+        return
+
+
 def main():
   print("//////////////////////////////////")
   print("Welcome to Suhwan's Final Project!")
   print("//////////////////////////////////\n")
   parser = argparse.ArgumentParser()
-  parser.add_argument("-f", "--filename", type=str, help="Edgelist File Path")
-  parser.add_argument("-a", "--area", type=int, help="Area Limit")
+  parser.add_argument("-f", "--filename", type=str, help="Edgelist File Path", required=True)
+  parser.add_argument("-a", "--area", type=int, help="Area Limit", required=True)
   parser.add_argument("-ml", "--memory_limit", type=int, help="Runs in Minimize Latency Mode with Given Memory Limit")
   parser.add_argument("-ll", "--latency_limit", type=int, help="Runs in Minimize Memory Mode with Given Latency Limit")
+  parser.add_argument("-auto", "--automate", action="store_true", 
+                      help="Use this option to automate. Use with -ll to collect latency and memory data.")
 
   args = parser.parse_args()
 
@@ -320,7 +333,7 @@ def main():
     print(f"Latency Limit is: {args.latency_limit}")
     limit = args.latency_limit
     min_memory = True
-  else:
+  elif (args.automate == False):
     print("ERROR! Must define Memory Or Latency Limit")
     sys.exit(1)
 
@@ -329,16 +342,41 @@ def main():
 
   g = nx.DiGraph()
   getGraph(fname, g)
-  generate_minimize(glpk_file, g, min_memory)
-  generate_subjects(glpk_file, g, area, limit, min_memory)
-  generate_bounds(glpk_file, g, area, limit, min_memory)
-  generate_integers(glpk_file, g, min_memory)
 
-  # Running Subprocesses to run GLPK 
-  print("\nRunning GLPK Linear Solver now...")
-  print("-----------------------------------------------------------------------------------------------------")
-  cmd_line = "glpk-5.0/examples/glpsol --cpxlp " + glpk_file + " -o outputs/" + args.filename + ".out"
-  subprocess.run(cmd_line, input=cmd_line, shell=True, text=True)
+  # Single Run Mode
+  if (args.automate == False):
+    generate_minimize(glpk_file, g, min_memory)
+    generate_subjects(glpk_file, g, area, limit, min_memory)
+    generate_bounds(glpk_file, g, area, limit, min_memory)
+    generate_integers(glpk_file, g, min_memory)
+
+    # Running Subprocesses to run GLPK 
+    print("\nRunning GLPK Linear Solver now...")
+    print("-----------------------------------------------------------------------------------------------------")
+    cmd_line = "glpk-5.0/examples/glpsol --cpxlp " + glpk_file + " -o outputs/" + args.filename + ".out"
+    subprocess.run(cmd_line, input=cmd_line, shell=True, text=True)
+
+    output_file = "outputs/" + args.filename + ".out"
+    print_results(output_file, limit, min_memory)
+
+
+  # We need to automate!
+  else:
+    print("\nAutomation Mode! Finding Optimal Memory...")
+    print("\nRunning GLPK Linear Solver now...")
+    print("-----------------------------------------------------------------------------------------------------")
+    num_nodes = g.number_of_nodes()
+    for latency_itr in range (1, num_nodes):
+      generate_minimize(glpk_file, g, True)
+      generate_subjects(glpk_file, g, area, latency_itr, True)
+      generate_bounds(glpk_file, g, area, latency_itr, True)
+      generate_integers(glpk_file, g, True)
+      
+      cmd_line = "glpk-5.0/examples/glpsol --cpxlp " + glpk_file + " -o outputs/" + args.filename + ".out > ./logs/dummylog.out"
+      subprocess.run(cmd_line, input=cmd_line, shell=True, text=True)
+
+      output_file = "outputs/" + args.filename + ".out"
+      print_results(output_file, latency_itr)
 
 if __name__ == "__main__":
   main()
