@@ -14,10 +14,10 @@ Setup Information
 To Set up the environment, run:
   In Linux Environment:
   ```shell
-    // Shouldn't need to download, it is included in the repo
+    # Shouldn't need to download, it is included in the repo
     wget http://ftp.gnu.org/gnu/glpk/glpk-5.0.tar.gz; tar -zxvf glpk-5.0.tar.gz
     sudo apt-get install build-essential
-    // Run from here:
+    # Run from here:
     cd glpk-5.0;./configure
     cd glpk-5.0; make
     cd ..
